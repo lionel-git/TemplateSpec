@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <format>
+#include <type_traits>
 
 enum class MyType
 {
@@ -28,9 +30,9 @@ struct Toto
 {
     template <typename T> static MyType getType()
     {
-        std::cout << "Error: No specialization for this type" << std::endl;
-        return MyType::TypeC;
         static_assert(false, "Missing specialization");
+        std::cout << "Error: No specialization for this type" << std::endl;
+        return MyType::TypeError;
     }
 
    template <> static MyType getType<TotoA>()
@@ -55,6 +57,11 @@ struct TotoA : public Toto
 };
 
 struct TotoB : public TotoA
+{
+    std::string s = std::format("TotoB");
+};
+
+struct TotoNoSpec : public TotoB
 {
 
 };
