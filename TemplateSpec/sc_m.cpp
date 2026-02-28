@@ -10,5 +10,5 @@ void doSomethingM()
     std::cout << toString(getType<TotoA>()) << std::endl;
     std::cout << toString(getType<TotoB>()) << std::endl;
     // Will cause a compile-time error due to static_assert in the primary template
-    //std::cout << toString(Toto::getType<TotoNoSpec>()) << std::endl;
+    //std::cout << toString(getType<TotoNoSpec>()) << std::endl;
 }
