@@ -345,3 +345,8 @@ callgrind.out.*
 _defines*.txt
 .gdb_history
 /clang_Exes
+
+# Manual
+tempSpec
+tempSpec_clang
+tempSpec_icx
