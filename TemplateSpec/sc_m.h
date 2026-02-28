@@ -1,8 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <format>
-#include <type_traits>
+
 
 enum class MyType
 {
@@ -38,7 +37,6 @@ struct TotoA : public Toto
 
 struct TotoB : public TotoA
 {
-    std::string s = std::format("TotoB");
 };
 
 struct TotoNoSpec : public TotoB
