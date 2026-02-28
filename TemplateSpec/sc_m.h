@@ -22,31 +22,8 @@ std::string toString(MyType type)
     }
 }
 
-// Forward declarations for template specialization
-struct TotoA;
-struct TotoB;
-
 struct Toto
 {
-    template <typename T> static MyType getType()
-    {
-        static_assert(false, "Missing specialization");
-        std::cout << "Error: No specialization for this type" << std::endl;
-        return MyType::TypeError;
-    }
-
-   // static or inline seem to work
-   template <> inline MyType getType<TotoA>()
-    {
-        return MyType::TypeA;
-    }
-
-
-   template <> inline MyType getType<TotoB>()
-   {
-       return MyType::TypeB;
-   }
-
     void doSomethingToto()
     {
         std::cout << "doSomething() called from Toto" << std::endl;
@@ -67,4 +44,26 @@ struct TotoB : public TotoA
 struct TotoNoSpec : public TotoB
 {
 
+};
+
+struct TypeChecker
+{
+    template <typename T> static MyType getType()
+    {
+        static_assert(false, "Missing specialization");
+        std::cout << "Error: No specialization for this type" << std::endl;
+        return MyType::TypeError;
+    }
+
+    // static or inline seem to work
+    template <> inline MyType getType<TotoA>()
+    {
+        return MyType::TypeA;
+    }
+
+
+    template <> inline MyType getType<TotoB>()
+    {
+        return MyType::TypeB;
+    }
 };
