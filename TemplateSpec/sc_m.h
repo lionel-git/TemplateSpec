@@ -35,11 +35,14 @@ struct Toto
         return MyType::TypeError;
     }
 
-   template <> static MyType getType<TotoA>()
+   // static or inline seem to work
+   template <> inline MyType getType<TotoA>()
     {
         return MyType::TypeA;
     }
-   template <> static MyType getType<TotoB>()
+
+
+   template <> inline MyType getType<TotoB>()
    {
        return MyType::TypeB;
    }
