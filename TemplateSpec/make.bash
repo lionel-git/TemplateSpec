@@ -1,6 +1,8 @@
 echo Build with g++ ...
-g++     main.cpp sc.cpp -o tempSpec
+g++     -std=c++20 main.cpp sc.cpp -o tempSpec
+
 echo Build with clang++ ...
-clang++ main.cpp sc.cpp -o tempSpec_clang
+clang++ -std=c++20 main.cpp sc.cpp -o tempSpec_clang
+
 echo Build with icpx ...
-icpx    main.cpp sc.cpp -o tempSpec_icx
+icpx    -std=c++20 main.cpp sc.cpp -o tempSpec_icx

@@ -12,6 +12,7 @@ enum class MyType
 template <typename T>
 inline MyType getType()
 {
+    // Rem: on clang++ 13, static_assert is evaluated but works if removed
     static_assert(false, "Missing specialization");
     std::cout << "Error: No specialization for this type" << std::endl;
     return MyType::TypeError;
