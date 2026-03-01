@@ -9,7 +9,6 @@ enum class MyType
     TypeError
 };
 
-// Object => type convertor
 template <typename T>
 inline MyType getType()
 {
@@ -17,11 +16,6 @@ inline MyType getType()
     std::cout << "Error: No specialization for this type" << std::endl;
     return MyType::TypeError;
 }
-struct TotoA;
-template <> inline MyType getType<TotoA>() { return MyType::TypeA; }
-struct TotoB;
-template <> inline MyType getType<TotoB>() { return MyType::TypeB; }
-// Object => type convertor
 
 std::string toString(MyType type)
 {
@@ -65,4 +59,5 @@ struct TotoNoSpec : public TotoB
 
 };
 
-
+template <> inline MyType getType<TotoA>() { return MyType::TypeA; }
+template <> inline MyType getType<TotoB>() { return MyType::TypeB; }
