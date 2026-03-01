@@ -21,12 +21,28 @@ std::string toString(MyType type)
     }
 }
 
+template <typename T>
+inline MyType getType()
+{
+    static_assert(false, "Missing specialization");
+    std::cout << "Error: No specialization for this type" << std::endl;
+    return MyType::TypeError;
+}
+
 struct Toto
 {
     void doSomethingToto()
     {
         std::cout << "doSomething() called from Toto" << std::endl;
     }
+
+    template <typename T >
+    void doSomethingTotoTyped()
+    {
+        auto type = getType<T>();
+        std::cout << "doSomethingTyped() called from Toto: " << toString(type) << std::endl;
+    }
+
 };
 
 
@@ -44,12 +60,6 @@ struct TotoNoSpec : public TotoB
 
 };
 
-template <typename T>
-inline MyType getType()
-{
-    static_assert(false, "Missing specialization");
-    std::cout << "Error: No specialization for this type" << std::endl;
-    return MyType::TypeError;
-}
+
 template <> inline MyType getType<TotoA>() { return MyType::TypeA; }
 template <> inline MyType getType<TotoB>() { return MyType::TypeB; }

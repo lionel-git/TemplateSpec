@@ -10,4 +10,6 @@ void doSomethingP()
     toto.doSomethingToto();
     std::cout << toString(getType<TotoA>()) << std::endl;
     std::cout << toString(getType<TotoB>()) << std::endl;
+
+    //toto.doSomethingTotoTyped<TotoNoSpec>();
 }
